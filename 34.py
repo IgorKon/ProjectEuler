@@ -1,11 +1,7 @@
-def factorial(n):
-    if n == 0:
-        return 1
-    else:
-        return n * factorial(n - 1)
+import Utilities
 f = {}
 for i in range(10):
-    f[i] = factorial(i)
+    f[i] = Utilities.factorial(i)
     print(i, f[i])
 # Число содержит не более 7 знаков, так как 
 # у 8-значного числа, даже состоящего только из 9-ток, сумма факториалов 8*9! = 2 903 040

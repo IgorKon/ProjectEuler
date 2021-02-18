@@ -1,3 +1,5 @@
+import math
+
 def IsPrimeFactor(i):
     if i in {2, 3, 5, 7}:
         return True
@@ -12,3 +14,34 @@ def IsPrimeFactor(i):
             return False
         f += 6
     return True
+
+def Mult(a):
+    res = 1
+    for j in a:
+        res *= j
+    return res
+
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n - 1)
+
+def GetAllDividers(n):
+    m = math.sqrt(n)
+    dividers = set()
+    dividers.add(1)
+    i = 2
+    while i <= m:
+        if n % i == 0:
+            dividers.add(i)
+            m = n // i
+            dividers.add(m)
+        i += 1
+    a = list(dividers)
+    a.sort()
+    return a
+
+def IsPalindromeStr(s):
+    return s == s[::-1]
+

@@ -36,7 +36,7 @@ def TwoDimMax(a, i, j, count):
     return m2
 
 count = 4
-f = open('num2.txt')
+f = open('num11.txt')
 a = f.readlines()
 b = []
 i = 0

@@ -1,7 +1,5 @@
 import datetime
-
-def IsPalindrome(s):
-    return s == s[::-1]
+import Utilities
 
 def IntToBinary(i):
     s2 = ''
@@ -18,9 +16,9 @@ start_time = datetime.datetime.now()
 res2 = []
 res10 = []
 for i in range(1000000):
-    if IsPalindrome(str(i)):
+    if Utilities.IsPalindromeStr(str(i)):
         s2 = IntToBinary(i)
-        if  IsPalindrome(s2):
+        if  Utilities.IsPalindromeStr(s2):
             res10.append(i)
             res2.append(s2)
 stop_time = datetime.datetime.now()

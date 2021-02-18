@@ -1,12 +1,6 @@
-def Mult(a):
-    res = 1
-    for j in a:
-        res *= j
-    return res
+import Utilities
 
-
-
-f = open('num1.txt') 
+f = open('num8.txt') 
 s = f.readline()
 n = []
 for ch in s:
@@ -20,7 +14,7 @@ while True:
     i_stop = i_start + i_count
     if i_stop > i_len: break
     a = n[i_start:i_stop]
-    mult = Mult(a)
+    mult = Utilities.Mult(a)
     if max_mult < mult: 
         max_mult = mult
         max_a = a

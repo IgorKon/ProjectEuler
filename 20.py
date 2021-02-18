@@ -1,10 +1,6 @@
-def factorial(n):
-    if n == 0:
-        return 1
-    else:
-        return n * factorial(n - 1)
+import Utilities
 
-m = factorial(100)
+m = Utilities.factorial(100)
 print(m)
 s = str(m)
 sum = sum([int(ch) for ch in s])
