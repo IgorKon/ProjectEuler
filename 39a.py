@@ -1,5 +1,4 @@
 import datetime
-
 start_time = datetime.datetime.now()
 TheBestRightTriangles = []
 TheBestP = 12
