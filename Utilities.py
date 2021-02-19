@@ -45,3 +45,10 @@ def GetAllDividers(n):
 def IsPalindromeStr(s):
     return s == s[::-1]
 
+def IsPanDigit(i):
+    s = str(i)
+    k = len(s)
+    a = [int(s1) for s1 in s]
+    a.sort()
+    b = [i for i in range(1, k + 1)]
+    return (a == b)
