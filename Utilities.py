@@ -52,3 +52,66 @@ def IsPanDigit(i):
     a.sort()
     b = [i for i in range(1, k + 1)]
     return (a == b)
+
+def CalcTriangularNum(i):
+    return ((i * (i + 1)) // 2)
+
+def IsTriangularNum(i):
+    d1 = 8 * i + 1
+    d2 = math.sqrt(d1)
+    d3 = d2 - 1
+    return (((int(d2) * int(d2)) == d1) and (d3 % 2 == 0))
+
+def TriangularNumbers(max_i):
+    a = set()
+    i = 0
+    j = 1
+    while True:
+        i += 1
+        j = (i * (i + 1)) // 2
+        if j > max_i:
+            break
+        a.add(j)
+    return a
+
+def CalcPentagonalNum(i):
+    return ((i * (3 * i - 1)) // 2)
+
+def IsPentagonalNum(i):
+    d1 = 24 * i + 1
+    d2 = math.sqrt(d1)
+    d3 = d2 + 1
+    return (((int(d2) * int(d2)) == d1) and (d3 % 6 == 0))
+
+def PentagonalNumbers(max_i):
+    a = set()
+    i = 0
+    j = 1
+    while True:
+        i += 1
+        j = (i * (3 * i - 1)) // 2
+        if j > max_i:
+            break
+        a.add(j)
+    return a
+
+def CalcHexagonalNum(i):
+    return (i * (2 * i - 1))
+
+def IsHexagonalNum(i):
+    d1 = 8 * i + 1
+    d2 = math.sqrt(d1)
+    d3 = d2 + 1
+    return (((int(d2) * int(d2)) == d1) and (d3 % 4 == 0))
+
+def HexagonalNumbers(max_i):
+    a = set()
+    i = 0
+    j = 1
+    while True:
+        i += 1
+        j = (i * (2 * i - 1))
+        if j > max_i:
+            break
+        a.add(j)
+    return a
