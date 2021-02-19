@@ -1,4 +1,4 @@
-f = open('p022_names.txt') 
+f = open('num22.txt') 
 s = f.readline()
 names = s.replace('"', '').split(",")
 names.sort()
