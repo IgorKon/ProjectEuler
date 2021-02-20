@@ -115,3 +115,31 @@ def HexagonalNumbers(max_i):
             break
         a.add(j)
     return a
+
+def Eratosthenes1(n):
+    a = [2]    
+    for i in range(3, n + 1, 2):
+        a.append(i)
+    for i in range(1, n):
+        j = len(a) - 1
+        if i > j:
+            break
+        d = a[i]
+        while j > i:
+            k = a[j]
+            if k % d == 0:
+                del a[j]
+            j -= 1
+    return a
+
+def Eratosthenes(n): 
+    p = [True for i in range(n + 1)] 
+    p[0] = False
+    p[1] = False
+    i = 2
+    while (i * i <= n): 
+        if (p[i]): 
+            for j in range(i * 2, n + 1, i): 
+                p[j] = False
+        i += 1
+    return [i for i in range(n + 1) if p[i]]
