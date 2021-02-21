@@ -16,7 +16,7 @@ for i in a:
     b = [int(''.join(p)) for p in permutations(s)]
     b.sort(reverse=True)
     for k in b:
-        if Utilities.IsPrimeFactor(k):
+        if Utilities.IsPrime(k):
             if i_max < k:
                 i_max = k
                 need_to_break = True

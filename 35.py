@@ -13,14 +13,14 @@ for i in range(101, 1000000, 2):
             break
     if bContinue:
         continue
-    if not Utilities.IsPrimeFactor(i):
+    if not Utilities.IsPrime(i):
         continue
     j = len(si)
     s1 = si
     for k in range(1, j):
         s1 = s1[-1] + s1[0:j-1]
         l = int(s1)
-        if not Utilities.IsPrimeFactor(l):
+        if not Utilities.IsPrime(l):
             bContinue = True
             break
     if bContinue:

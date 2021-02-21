@@ -16,6 +16,6 @@ n=600851475143
 dividers = GetDividers(n)
 print(dividers)
 for i in dividers[::-1]:
-    if Utilities.IsPrimeFactor(i):
+    if Utilities.IsPrime(i):
         print(i)
         break

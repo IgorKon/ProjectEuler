@@ -8,7 +8,7 @@ for a in range(-999, 1000):
         count = 0
         for n in range(1000):
             k = n * n + a * n + b
-            if Utilities.IsPrimeFactor(k):
+            if Utilities.IsPrime(k):
                 count += 1
                 if max_count < count:
                     max_count = count

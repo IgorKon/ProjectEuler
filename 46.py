@@ -4,10 +4,6 @@ import math
 
 start_time = datetime.datetime.now()
 
-def IsSquare(n):
-    d = math.sqrt(n)
-    return (int(d) * int(d) == n)
-
 max_i = 1000000
 
 p_list = Utilities.Eratosthenes(max_i)
@@ -22,7 +18,7 @@ for i in range(9, max_i, 2):
             if (i - pp) < 2:
                 break
             d = i - pp
-            if IsSquare(d // 2):
+            if Utilities.IsSquare(d // 2):
                 NotFound = False
                 break
             j += 1

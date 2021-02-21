@@ -1,6 +1,10 @@
 import math
 
-def IsPrimeFactor(i):
+def IsSquare(n):
+    d = int(math.sqrt(n))
+    return ((d * d) == n)
+
+def IsPrime(i):
     if i in {2, 3, 5, 7}:
         return True
     if i < 2 or i % 2 == 0:
@@ -27,7 +31,7 @@ def factorial(n):
     else:
         return n * factorial(n - 1)
 
-def GetAllDividers(n):
+def GetUniqueDividers(n):
     m = math.sqrt(n)
     dividers = set()
     dividers.add(1)
@@ -41,6 +45,30 @@ def GetAllDividers(n):
     a = list(dividers)
     a.sort()
     return a
+
+def GetPrimeDividers(n):
+    dividers = dict()
+    if IsPrime(n):
+        dividers[n] = 1
+        return dividers
+    m = math.sqrt(n)
+    i = 2
+    while i <= m:
+        if n % i == 0:
+            if i in dividers.keys():
+                dividers[i] += 1
+            else:
+                dividers[i] = 1
+            n = n // i
+            if IsPrime(n):
+                if n in dividers.keys():
+                    dividers[n] += 1
+                else:
+                    dividers[n] = 1
+                break
+        else:
+            i += 1
+    return dividers
 
 def IsPalindromeStr(s):
     return s == s[::-1]

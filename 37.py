@@ -9,15 +9,15 @@ while iCount < 11:
     i += 2
     b = False
     ii = 0
-    if Utilities.IsPrimeFactor(i):
+    if Utilities.IsPrime(i):
         s = str(i)
         iLength = len(s)
         for j in range(1, iLength):
             k = int(s[j::])
-            if Utilities.IsPrimeFactor(k):
+            if Utilities.IsPrime(k):
                 ii += 1
                 k = int(s[:iLength - j])
-                if Utilities.IsPrimeFactor(k):
+                if Utilities.IsPrime(k):
                     ii += 1
                 else:
                     break
