@@ -1,12 +1,12 @@
 import datetime
-from itertools import permutations
+import itertools
 import Utilities
 
 start_time = datetime.datetime.now()
 
 j = 10000000
 a = Utilities.PentagonalNumbers(j)
-b = [p for p in permutations(a, 2)]
+b = [p for p in itertools.combinations(a, 2)]
 max_a = max(a)
 min_d = max_a
 min_b1 = 0

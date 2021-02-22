@@ -1,11 +1,10 @@
 import datetime
-import Utilities
-from itertools import permutations
+import itertools
 
 start_time = datetime.datetime.now()
 
 s = '1234567890'
-a = [''.join(p) for p in permutations(s) if p[0] != '0' and (p[5] == '0' or p[5] == '5')]
+a = [''.join(p) for p in itertools.permutations(s) if p[0] != '0' and (p[5] == '0' or p[5] == '5')]
 #a = [''.join(p) for p in permutations(s) if p[0] != '0' and p[5] == '5']
 print(len(a))
 b=[]
