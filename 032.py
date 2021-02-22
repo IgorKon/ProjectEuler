@@ -1,5 +1,13 @@
 import datetime
 import re
+
+# Problem 32
+# We shall say that an n-digit number is pandigital if it makes use of all the digits 1 to n exactly once; for example, 
+# the 5-digit number, 15234, is 1 through 5 pandigital.
+# The product 7254 is unusual, as the identity, 39 × 186 = 7254, containing multiplicand, multiplier, and product is 1 through 9 pandigital.
+# Find the sum of all products whose multiplicand/multiplier/product identity can be written as a 1 through 9 pandigital.
+# HINT: Some products can be obtained in more than one way so be sure to only include it once in your sum.
+
 def IsPanDigit(i, j, k):
     s = str(i) + str(j) + str(k)
     if len(s) != 9: return False
@@ -15,6 +23,7 @@ def IsSingleNotZeroDigit(n):
     if s.find("0") != -1: return False
     if len(s) == 1:
         return True
+    # trying to find duplicate numbers 
     m = re.findall(r'(\d).*\1', s)
     return (len(m) == 0)
 def ContainTheSameDigits(i, j):
