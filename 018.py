@@ -1,3 +1,8 @@
+# Maximum path sum I
+
+# Problem 18
+# https://projecteuler.net/problem=18
+
 f = open('num18.txt') 
 lines = f.readlines()
 n = []

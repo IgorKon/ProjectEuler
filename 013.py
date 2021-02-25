@@ -2,6 +2,7 @@
 
 # Problem 13
 # Work out the first ten digits of the sum of the following one-hundred 50-digit numbers.(file num13.txt)
+# https://projecteuler.net/problem=13
 
 f = open('num13.txt') 
 s = f.readlines()
