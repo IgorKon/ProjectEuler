@@ -1,3 +1,8 @@
+# Quadratic primes
+
+# Problem 27
+# https://projecteuler.net/problem=27
+
 import Utilities
 
 max_count = 0
