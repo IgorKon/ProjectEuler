@@ -1,6 +1,17 @@
+# Distinct primes factors
+
+# Problem 47
+# The first two consecutive numbers to have two distinct prime factors are:
+# 14 = 2 × 7
+# 15 = 3 × 5
+# The first three consecutive numbers to have three distinct prime factors are:
+# 644 = 2² × 7 × 23
+# 645 = 3 × 5 × 43
+# 646 = 2 × 17 × 19.
+# Find the first four consecutive integers to have four distinct prime factors each. What is the first of these numbers?
+
 import datetime
 import Utilities
-import math
 
 start_time = datetime.datetime.now()
 
@@ -10,7 +21,6 @@ def SetByDividers(n):
     for k in d.keys():
         res.add(str(k) + '_' + str(d[k]))
     return res
-
 
 d2 = SetByDividers(640)
 d3 = SetByDividers(641)
