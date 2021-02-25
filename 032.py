@@ -1,5 +1,5 @@
-import datetime
-import re
+
+# Pandigital products
 
 # Problem 32
 # We shall say that an n-digit number is pandigital if it makes use of all the digits 1 to n exactly once; for example, 
@@ -7,6 +7,10 @@ import re
 # The product 7254 is unusual, as the identity, 39 × 186 = 7254, containing multiplicand, multiplier, and product is 1 through 9 pandigital.
 # Find the sum of all products whose multiplicand/multiplier/product identity can be written as a 1 through 9 pandigital.
 # HINT: Some products can be obtained in more than one way so be sure to only include it once in your sum.
+# https://projecteuler.net/problem=32
+
+import datetime
+import re
 
 def IsPanDigit(i, j, k):
     s = str(i) + str(j) + str(k)
