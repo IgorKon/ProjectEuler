@@ -10,6 +10,7 @@
 # 33 = 31 + 2 * 1**2
 # It turns out that the conjecture was false.
 # What is the smallest odd composite that cannot be written as the sum of a prime and twice a square?
+# https://projecteuler.net/problem=46
 
 import datetime
 import Utilities

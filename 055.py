@@ -11,6 +11,7 @@
 # Surprisingly, there are palindromic numbers that are themselves Lychrel numbers; the first example is 4994.
 # How many Lychrel numbers are there below ten-thousand?
 # NOTE: Wording was modified slightly on 24 April 2007 to emphasise the theoretical nature of Lychrel numbers.
+# https://projecteuler.net/problem=55
 
 import datetime
 import Utilities

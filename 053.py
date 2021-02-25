@@ -8,6 +8,7 @@
 # n! = n * (n - 1) * (n - 2) * ... * 3 * 2 * 1, and 0! = 1.
 # It is not until n = 23, that a value exceeds one-million: (23 / 10) = 1,144,066.
 # How many, not necessarily distinct, values of (n / r) for 1 <= n <= 100, are greater than one-million?
+# https://projecteuler.net/problem=53
 
 import datetime
 import Utilities
