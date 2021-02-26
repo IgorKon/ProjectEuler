@@ -21,32 +21,25 @@
 import datetime
 import Utilities
 
-def GetDiagonalNums():
-    res = [1, 1, 1, 1]
-    iDiagNumber = 0
-    while True:
-        iDiagNumber += 1
-        increment = 2 * iDiagNumber
-        res[0] = res[3] + increment
-        res[1] = res[0] + increment
-        res[2] = res[1] + increment
-        res[3] = res[2] + increment
-        yield res
-
 iDiagNumber = 0
 iOverallCount = 1
 iPrimeCount = 0
-diagonalGenerator = GetDiagonalNums()
 percent = 100
+d = [1, 1, 1, 1]
 
 start_time = datetime.datetime.now()
 
-for d in diagonalGenerator:
+while True:
     iDiagNumber += 1
-    iOverallCount += 4
+    increment = 2 * iDiagNumber
+    d[0] = d[3] + increment
+    d[1] = d[0] + increment
+    d[2] = d[1] + increment
+    d[3] = d[2] + increment
     for i in d:
         if Utilities.IsPrime(i):
             iPrimeCount += 1
+    iOverallCount += 4
     percent = iPrimeCount / iOverallCount
     if percent < 0.1:
         break
