@@ -11,7 +11,6 @@
 # https://projecteuler.net/problem=53
 
 import datetime
-import Utilities
 
 def GetFactorials(n):
     ff = 1
