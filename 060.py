@@ -55,7 +55,6 @@ for b in itertools.combinations(a, 5):
                 break
         if bPrime:
             res.append(sum(b))
-
 stop_time = datetime.datetime.now()
 print(stop_time - start_time)
 if len(res) > 0:
