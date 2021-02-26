@@ -1,41 +1,15 @@
+# Coin sums
+
+# Problem 31
+# In the United Kingdom the currency is made up of pound (£) and pence (p). There are eight coins in general circulation:
+# 1p, 2p, 5p, 10p, 20p, 50p, £1 (100p), and £2 (200p).
+# It is possible to make £2 in the following way:
+# 1×£1 + 1×50p + 2×20p + 1×5p + 1×2p + 3×1p
+# How many different ways can £2 be made using any number of coins?
+# https://projecteuler.net/problem=31
+
 import datetime
 
-""" def GetString(i_p1, i_p2 = 0, i_p5 = 0, i_p10 = 0, i_p20 = 0, i_p50 = 0, i_f1 = 0):
-    s = ""
-    if i_p1 > 0:
-        s = "{}*1".format(i_p1)
-    if i_p2 > 0:
-        if s == "":
-            s = "{}*2".format(i_p2)
-        else:
-            s += " {}*2".format(i_p2)
-    if i_p5 > 0:
-        if s == "":
-            s = "{}*5".format(i_p5)
-        else:
-            s += " {}*5".format(i_p5)
-    if i_p10 > 0:
-        if s == "":
-            s = "{}*10".format(i_p10)
-        else:
-            s += " {}*10".format(i_p10)
-    if i_p20 > 0:
-        if s == "":
-            s = "{}*20".format(i_p20)
-        else:
-            s += " {}*20".format(i_p20)
-    if i_p50 > 0:
-        if s == "":
-            s = "{}*50".format(i_p50)
-        else:
-            s += " {}*50".format(i_p50)
-    if i_f1 > 0:
-        if s == "":
-            s = "{}*1£".format(i_f1)
-        else:
-            s += " {}*1£".format(i_f1)
-    return s
- """
 start_time = datetime.datetime.now()
 p1 = 1
 p2 = 2
