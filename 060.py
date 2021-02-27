@@ -32,6 +32,7 @@ stop_time = datetime.datetime.now()
 print(stop_time - start_time)
 
 res = []
+<<<<<<< HEAD
 # for ii1 in range(a_len):
 #     i1 = a[ii1]
 #     for ii2 in range(ii1, a_len):
