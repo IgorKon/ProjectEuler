@@ -90,7 +90,7 @@ def IsTriangularNum(i):
     d3 = d2 - 1
     return (((int(d2) * int(d2)) == d1) and (d3 % 2 == 0))
 
-def TriangularNumbers(max_i):
+def TriangularNumbers(max_i, min_i = 1):
     a = set()
     i = 0
     j = 1
@@ -99,7 +99,28 @@ def TriangularNumbers(max_i):
         j = (i * (i + 1)) // 2
         if j > max_i:
             break
-        a.add(j)
+        if j >= min_i:
+            a.add(j)
+    return a
+
+def CalcSquareNum(i):
+    return i * i
+
+def IsSquareNum(i):
+    d1 = math.sqrt(i)
+    return ((int(d1) * int(d1)) == i)
+
+def SquareNumbers(max_i, min_i = 1):
+    a = set()
+    i = 0
+    j = 1
+    while True:
+        i += 1
+        j = i * i
+        if j > max_i:
+            break
+        if j >= min_i:
+            a.add(j)
     return a
 
 def CalcPentagonalNum(i):
@@ -111,7 +132,7 @@ def IsPentagonalNum(i):
     d3 = d2 + 1
     return (((int(d2) * int(d2)) == d1) and (d3 % 6 == 0))
 
-def PentagonalNumbers(max_i):
+def PentagonalNumbers(max_i, min_i = 1):
     a = set()
     i = 0
     j = 1
@@ -120,7 +141,8 @@ def PentagonalNumbers(max_i):
         j = (i * (3 * i - 1)) // 2
         if j > max_i:
             break
-        a.add(j)
+        if j >= min_i:
+            a.add(j)
     return a
 
 def CalcHexagonalNum(i):
@@ -132,7 +154,7 @@ def IsHexagonalNum(i):
     d3 = d2 + 1
     return (((int(d2) * int(d2)) == d1) and (d3 % 4 == 0))
 
-def HexagonalNumbers(max_i):
+def HexagonalNumbers(max_i, min_i = 1):
     a = set()
     i = 0
     j = 1
@@ -141,7 +163,52 @@ def HexagonalNumbers(max_i):
         j = (i * (2 * i - 1))
         if j > max_i:
             break
-        a.add(j)
+        if j >= min_i:
+            a.add(j)
+    return a
+
+def CalcHeptagonalNum(i):
+    return (i * (5 * i - 3)) // 2
+
+def IsHeptagonalNum(i):
+    d1 = 40 * i + 9
+    d2 = math.sqrt(d1)
+    d3 = d2 + 3
+    return (((int(d2) * int(d2)) == d1) and (d3 % 10 == 0))
+
+def HeptagonalNumbers(max_i, min_i = 1):
+    a = set()
+    i = 0
+    j = 1
+    while True:
+        i += 1
+        j = (i * (5 * i - 3)) // 2
+        if j > max_i:
+            break
+        if j >= min_i:
+            a.add(j)
+    return a
+
+def CalcOctagonalNum(i):
+    return (i * (3 * i - 2))
+
+def IsOctagonalNum(i):
+    d1 = 3 * i + 1
+    d2 = math.sqrt(d1)
+    d3 = d2 + 1
+    return (((int(d2) * int(d2)) == d1) and (d3 % 3 == 0))
+
+def OctagonalNumbers(max_i, min_i = 1):
+    a = set()
+    i = 0
+    j = 1
+    while True:
+        i += 1
+        j = (i * (3 * i - 2))
+        if j > max_i:
+            break
+        if j >= min_i:
+            a.add(j)
     return a
 
 def Eratosthenes1(n):
