@@ -9,7 +9,6 @@
 
 import datetime
 import Utilities
-import itertools
 
 start_time = datetime.datetime.now()
 
@@ -21,23 +20,26 @@ del a[1]
 a_len = len(a)
 GoodPairs = set()
 
-for b in itertools.combinations(a, 2):
-    i = int(str(b[0]) + str(b[1]))
-    if Utilities.IsPrime(i):
-        i = int(str(b[1]) + str(b[0]))
-        if Utilities.IsPrime(i):
-            GoodPairs.add((b[0], b[1]))
+for ii in range(a_len - 1):
+    i = a[ii]
+    for jj in range(ii, a_len):
+        j = a[jj]
+        k = int(str(i) + str(j))
+        if Utilities.IsPrime(k):
+            k = int(str(j) + str(i))
+            if Utilities.IsPrime(k):
+                GoodPairs.add((i, j))
 
 res = []
-for ii1 in range(a_len):
+for ii1 in range(a_len - 4):
     i1 = a[ii1]
-    for ii2 in range(ii1, a_len):
+    for ii2 in range(ii1, a_len - 3):
         i2 = a[ii2]
         if (i1, i2) in GoodPairs:
-            for ii3 in range(ii2, a_len):
+            for ii3 in range(ii2, a_len - 2):
                 i3 = a[ii3]
                 if (i1, i3) in GoodPairs and (i2, i3) in GoodPairs:
-                    for ii4 in range(ii3, a_len):
+                    for ii4 in range(ii3, a_len - 1):
                         i4 = a[ii4]
                         if (i1, i4) in GoodPairs and (i2, i4) in GoodPairs and\
                            (i3, i4) in GoodPairs:
