@@ -28,46 +28,29 @@ for b in itertools.combinations(a, 2):
         if Utilities.IsPrime(i):
             GoodPairs.add((b[0], b[1]))
 
-stop_time = datetime.datetime.now()
-print(stop_time - start_time)
-
 res = []
-# for ii1 in range(a_len):
-#     i1 = a[ii1]
-#     for ii2 in range(ii1, a_len):
-#         i2 = a[ii2]
-#         if (i1, i2) in GoodPairs:
-#             for ii3 in range(ii2, a_len):
-#                 i3 = a[ii3]
-#                 if (i1, i3) in GoodPairs and (i2, i3) in GoodPairs:
-#                     for ii4 in range(ii3, a_len):
-#                         i4 = a[ii4]
-#                         if (i1, i4) in GoodPairs and (i2, i4) in GoodPairs and\
-#                            (i3, i4) in GoodPairs:
-#                            for ii5 in range(ii4, a_len):
-#                                i5 = a[ii4]
-#                                if (i1, i5) in GoodPairs and (i2, i5) in GoodPairs and\
-#                                    (i3, i5) in GoodPairs and (i4, i5) in GoodPairs:
-#                                    res.append(i1 + i2 + i3 + i4 + i5)
-
-for i1 in a:
-     for i2 in a:
-         if (i1, i2) in GoodPairs:
-             for i3 in a:
-                 if (i1, i3) in GoodPairs and (i2, i3) in GoodPairs:
-                     for i4 in a:
-                         if (i1, i4) in GoodPairs and (i2, i4) in GoodPairs and\
-                            (i3, i4) in GoodPairs:
-                            for i5 in a:
-                                if (i1, i5) in GoodPairs and (i2, i5) in GoodPairs and\
-                                    (i3, i5) in GoodPairs and (i4, i5) in GoodPairs:
-                                    print(i1, i2, i3, i4, i5)
-                                    res.append(i1 + i2 + i3 + i4 + i5)
+for ii1 in range(a_len):
+    i1 = a[ii1]
+    for ii2 in range(ii1, a_len):
+        i2 = a[ii2]
+        if (i1, i2) in GoodPairs:
+            for ii3 in range(ii2, a_len):
+                i3 = a[ii3]
+                if (i1, i3) in GoodPairs and (i2, i3) in GoodPairs:
+                    for ii4 in range(ii3, a_len):
+                        i4 = a[ii4]
+                        if (i1, i4) in GoodPairs and (i2, i4) in GoodPairs and\
+                           (i3, i4) in GoodPairs:
+                           for ii5 in range(ii4, a_len):
+                               i5 = a[ii5]
+                               if (i1, i5) in GoodPairs and (i2, i5) in GoodPairs and\
+                                   (i3, i5) in GoodPairs and (i4, i5) in GoodPairs:
+                                   print(i1, i2, i3, i4, i5)
+                                   res.append(i1 + i2 + i3 + i4 + i5)
 
 stop_time = datetime.datetime.now()
 print(stop_time - start_time)
 
-print('Good pairs count:', len(GoodPairs))
 if len(res) > 0:
     print(min(res))
 else:
