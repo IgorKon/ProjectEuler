@@ -23,8 +23,6 @@
 
 import datetime
 import Utilities
-import itertools
-
 
 class PathNode:
     def __init__(self, to_partition_index, to_numbers_list):
@@ -39,14 +37,12 @@ class Partition:
         from_num_set = SourcesDict[self.PartitionIndex]
         self.FromNumToPartitionDict = dict()
         for num in from_num_set:
-            s_num = str(num)
-            #s_num_start = s_num[0] + s_num[1]
-            s_num_end = s_num[2] + s_num[3]
+            num100 = num % 100
             for partition_index in SourcesDict:
                 if partition_index == self.PartitionIndex:
                     continue
                 other_numbers_set = SourcesDict[partition_index]
-                next_list = [j for j in other_numbers_set if str(j)[0] + str(j)[1] == s_num_end and not j == num]
+                next_list = [j for j in other_numbers_set if j // 100 == num100]
                 if len(next_list) > 0:
                     if num in self.FromNumToPartitionDict.keys():
                         transitions_list = self.FromNumToPartitionDict[num]
