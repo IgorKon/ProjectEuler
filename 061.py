@@ -66,6 +66,8 @@ def CalculateCyclicTransitions(iStartPartition, Partitions):
                 Partition2 = Partitions[pNode1.ToPortitionIndex]
                 # iterate numbers from the list of that PathNode
                 for number2 in pNode1.ToNumbersList:
+                    if number2 == number1:
+                        continue
                     if number2 in Partition2.FromNumToPartitionDict:
                         pathNodeList2 = Partition2.FromNumToPartitionDict[number2]
                         for pNode2 in pathNodeList2:
@@ -75,6 +77,8 @@ def CalculateCyclicTransitions(iStartPartition, Partitions):
                             Partition3 = Partitions[pNode2.ToPortitionIndex]
                             # iterate numbers from the list of that PathNode
                             for number3 in pNode2.ToNumbersList:
+                                if number3 == number1 or number3 == number2:
+                                    continue
                                 if number3 in Partition3.FromNumToPartitionDict:
                                     pathNodeList3 = Partition3.FromNumToPartitionDict[number3]
                                     for pNode3 in pathNodeList3:
@@ -85,6 +89,8 @@ def CalculateCyclicTransitions(iStartPartition, Partitions):
                                         Partition4 = Partitions[pNode3.ToPortitionIndex]
                                         # iterate numbers from the list of that PathNode
                                         for number4 in pNode3.ToNumbersList:
+                                            if number4 == number1 or number4 == number2 or number4 == number1:
+                                                continue
                                             if number4 in Partition4.FromNumToPartitionDict:
                                                 pathNodeList4 = Partition4.FromNumToPartitionDict[number4]
                                                 for pNode4 in pathNodeList4:
@@ -96,6 +102,8 @@ def CalculateCyclicTransitions(iStartPartition, Partitions):
                                                     Partition5 = Partitions[pNode4.ToPortitionIndex]
                                                     # iterate numbers from the list of that PathNode
                                                     for number5 in pNode4.ToNumbersList:
+                                                        if number5 == number1 or number5 == number2 or number5 == number3 or number5 == number4:
+                                                            continue
                                                         if number5 in Partition5.FromNumToPartitionDict:
                                                             pathNodeList5 = Partition5.FromNumToPartitionDict[number5]
                                                             for pNode5 in pathNodeList5:
@@ -108,6 +116,9 @@ def CalculateCyclicTransitions(iStartPartition, Partitions):
                                                                 Partition6 = Partitions[pNode5.ToPortitionIndex]
                                                                 # iterate numbers from the list of that PathNode
                                                                 for number6 in pNode5.ToNumbersList:
+                                                                    if number6 == number1 or number6 == number2 or number6 == number3 or \
+                                                                       number6 == number4 or number6 == number5:
+                                                                        continue
                                                                     if number6 in Partition6.FromNumToPartitionDict:
                                                                         pathNodeList6 = Partition6.FromNumToPartitionDict[number6]
                                                                         for pNode6 in pathNodeList6:
