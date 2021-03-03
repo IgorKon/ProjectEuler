@@ -46,18 +46,17 @@ class Partition:
                 if len(next_list) > 0:
                     if num in self.FromNumToPartitionDict.keys():
                         transitions_list = self.FromNumToPartitionDict[num]
-                        transitions_list.append(PathNode(partition_index, next_list))
                     else:
                         transitions_list = list()
-                        transitions_list.append(PathNode(partition_index, next_list))
                         self.FromNumToPartitionDict[num] = transitions_list
+                    transitions_list.append(PathNode(partition_index, next_list))
 
-    def StartCyclicTransitionsStep(self, Partitions, CycleCount):
+    def StartCyclicTransitions(self, Partitions, CycleCount):
         for number in self.FromNumToPartitionDict:
-            res = self.CalculateCyclicTransitionsStep(Partitions, CycleCount, self.PartitionIndex, number, number)
-            if len(res) > 0:
-                res.insert(0, number)
-                return res
+            bRes, resList = self.CalculateCyclicTransitionsStep(Partitions, CycleCount, self.PartitionIndex, number, number)
+            if bRes:
+                resList.insert(0, number)
+                return resList
         return list()
 
     def CalculateCyclicTransitionsStep(self, Partitions, CycleCount, StartPartitionIndex, number, StartNumber):
@@ -73,23 +72,15 @@ class Partition:
                     if number1 == number:
                         continue
                     if CycleCount > 0:
-                        res = Partition.CalculateCyclicTransitionsStep(Partitions, CycleCount, StartPartitionIndex, number1, StartNumber)
-                        if len(res) > 0:
-                            res.insert(0, number1)
-                            return res
+                        bRes, resList = Partition.CalculateCyclicTransitionsStep(Partitions, CycleCount, StartPartitionIndex, number1, StartNumber)
+                        if bRes:
+                            resList.insert(0, number1)
+                            return True, resList
                     else:
                     # The Last Step
-                        if number1 in Partition.FromNumToPartitionDict:
-                            pathNodeList1 = Partition.FromNumToPartitionDict[number1]
-                            for pNode1 in pathNodeList1:
-                                if pNode1.ToPortitionIndex == iStartPartition:
-                                    # iterate numbers from the list of that PathNode
-                                    for number2 in pNode1.ToNumbersList:
-                                        if number2 == StartNumber:
-                                            res = list()
-                                            res.insert(0, number1)
-                                            return res
-        return list()
+                        if number1 == StartNumber:
+                            return True, list()
+        return False, list()
 
 start_time = datetime.datetime.now()
 
@@ -114,6 +105,7 @@ for i in range(6):
     if len(p.FromNumToPartitionDict) > 0:
         Partitions.append(p)
         iCount += 1
+        # finding partition with the the smallest length of Transitions to start from
         TransitionsCount = len(p.FromNumToPartitionDict)
         if iMinTransitionsFrom > TransitionsCount:
             iMinTransitionsFrom = TransitionsCount
@@ -121,8 +113,7 @@ for i in range(6):
 
 res = []
 if iCount == 6:
-#    res = CalculateCyclicTransitions(iStartPartition, Partitions)
-    res = Partitions[iStartPartition].StartCyclicTransitionsStep(Partitions, 5)
+    res = Partitions[iStartPartition].StartCyclicTransitions(Partitions, 6)
 
 stop_time = datetime.datetime.now()
 print(stop_time - start_time)
