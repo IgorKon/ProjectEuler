@@ -52,14 +52,16 @@ class Partition:
                     transitions_list.append(PathNode(partition_index, next_list))
 
     def StartCyclicTransitions(self, Partitions, CycleCount):
+        PartitionIndexes = set()
+        PartitionIndexes.add(self.PartitionIndex)
         for number in self.FromNumToPartitionDict:
-            bRes, resList = self.CalculateCyclicTransitionsStep(Partitions, CycleCount, self.PartitionIndex, number, number)
+            bRes, resList = self.CalculateCyclicTransitionsStep(Partitions, CycleCount, PartitionIndexes, number, number, self.PartitionIndex)
             if bRes:
                 resList.insert(0, number)
                 return resList
         return list()
 
-    def CalculateCyclicTransitionsStep(self, Partitions, CycleCount, StartPartitionIndex, number, StartNumber):
+    def CalculateCyclicTransitionsStep(self, Partitions, CycleCount, PartitionIndexes, number, StartNumber, StartPartitionIndex):
         CycleCount -= 1
         if number in self.FromNumToPartitionDict:
             # gets the list of PathNodes for that number
@@ -67,15 +69,27 @@ class Partition:
             # iterate PathNodes for the list
             for pNode in pathNodeList:
                 # gets next partition for that pNode
+                if CycleCount > 0:
+                    if pNode.ToPortitionIndex in PartitionIndexes:
+                        continue
+                else:
+                    if pNode.ToPortitionIndex != StartPartitionIndex:
+                        continue
                 Partition = Partitions[pNode.ToPortitionIndex]
                 for number1 in pNode.ToNumbersList:
                     if number1 == number:
                         continue
                     if CycleCount > 0:
-                        bRes, resList = Partition.CalculateCyclicTransitionsStep(Partitions, CycleCount, StartPartitionIndex, number1, StartNumber)
+                        PartitionIndexes.add(pNode.ToPortitionIndex)
+                        bRes, resList = Partition.CalculateCyclicTransitionsStep(Partitions, CycleCount, PartitionIndexes, number1, StartNumber, StartPartitionIndex)
                         if bRes:
-                            resList.insert(0, number1)
-                            return True, resList
+                            if not (number1 in resList):
+                                resList.insert(0, number1)
+                                return True, resList
+                            else:
+                                return False, list()
+                        else:
+                            PartitionIndexes.remove(pNode.ToPortitionIndex)
                     else:
                     # The Last Step
                         if number1 == StartNumber:
