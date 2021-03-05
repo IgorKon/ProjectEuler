@@ -4,6 +4,10 @@ def IsSquare(n):
     d = int(math.sqrt(n))
     return ((d * d) == n)
 
+def IsCube(n):
+    d = int(n ** (1 / 3))
+    return ((d * d * d) == n)
+
 def IsPrime(i):
     if i in {2, 3, 5, 7}:
         return True
