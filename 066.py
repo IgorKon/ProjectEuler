@@ -19,40 +19,32 @@ import datetime
 import math
 
 start_time = datetime.datetime.now()
-sq1 = []
-for x in range(2, 1001):
-    sq1.append(x * x)
 
-sq10 = sq1[:]
-for x in range(1001, 10001):
-    sq10.append(x * x)
-
-l = len(sq10)
-res = []
 maxx = 0
 maxy = 0
 maxd = 0
 for D in range(2, 1001):
-    if D in sq1:
+    sq = int(math.sqrt(D))
+    if sq * sq == D:
         continue
-#    a = [(x2, y2) for x2 in sq1 for y2 in sq1 if x2 - D*y2 == 1]
-    for ix in range(1, l):
-        x2 = sq10[ix]
-        if x2 < D:
-            continue
-        for iy in range(ix):
-            y2 = sq10[iy]
-            diff = x2 - D * y2
-            if diff == 1:
-                if maxx < x2:
-                    maxx = x2
-                    maxy = y2
-                    maxd = D
-            elif diff < 0:
-                break
+    m, d, a = 0, 1, sq
+    numm1, num = 1, a
+    denm1, den = 0, 1
+    while (num * num - D * den * den) != 1:
+        m = d * a - m
+        d = (D - m * m) // d
+        a = (sq + m) // d
+        numm2, numm1 = numm1, num
+        num = a * numm1 + numm2
+
+        denm2, denm1 = denm1, den
+        den = a * denm1 + denm2
+
+    if maxx < num:
+        maxx = num
+        maxy = den
+        maxd = D
 
 stop_time = datetime.datetime.now()
 print(stop_time - start_time)
-
-print(int(math.sqrt(maxx)), int(math.sqrt(maxy)), maxd)
-#print(a)
+print(maxx, maxy, maxd)

@@ -50,4 +50,4 @@ def pell(d):
 stop_time = datetime.datetime.now()
 print(stop_time - start_time)
 
-print(max((pell(d), d) for d in range(661, 662))[1])
+print(max((pell(d), d) for d in range(2, 1001))[1])
