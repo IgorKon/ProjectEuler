@@ -16,7 +16,6 @@
 # https://projecteuler.net/problem=66
 
 import datetime
-import math
 
 start_time = datetime.datetime.now()
 
