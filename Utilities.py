@@ -74,6 +74,15 @@ def GetPrimeDividers(n):
             i += 1
     return dividers
 
+def Phi(n):
+    dividers = GetPrimeDividers(n)
+    res = 1
+    for p in dividers:
+        pn = dividers[p]
+        res *= (p ** pn - p ** (pn - 1))
+    return res
+
+
 def IsPalindromeStr(s):
     return s == s[::-1]
 
