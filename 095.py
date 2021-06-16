@@ -11,48 +11,63 @@
 # Find the smallest member of the longest amicable chain with no element exceeding one million.
 # https://projecteuler.net/problem=95
 
-import math
 import datetime
 
-def IsSqr(n):
-    x = math.ceil((math.sqrt(n)))
-    return (x * x == n)
-
-def GetDevidersSumm(n):
-    res = 1
-    for i in range(2, n // 2 + 1):
-        if n % i == 0:
-            res += i
-    # if IsSqr(n):
-    #     res -= 1
+def GenerateFactorsSumm(limit : int):
+    res = list()
+    for i in range(limit + 1):
+        res.append(0)
+    res[1] = 1
+    for i in range(1, limit // 2):
+        for j in range(2 * i, limit + 1, i):
+            res[j] += i
     return res
 
 limit = 1000000
 start_time = datetime.datetime.now()
-l = list()
-length = 0
+FactorsSumm = GenerateFactorsSumm(limit)
+chain = list()
+number_was_used = list()
+for i in range(limit + 1):
+    number_was_used.append(False)
 
-i = 6
-while i < limit:
-    i += 1
-    summ = i
-    l.clear()
+length = 0
+min_a = limit
+i = limit + 1
+while i > 5:
+    i -= 1
+    newNumber = i
+    chain.clear()
+    chain.append(newNumber)
     while True:
-        summ = GetDevidersSumm(summ)
-        if summ > limit:
+        newNumber = FactorsSumm[newNumber]
+        if newNumber > limit:
            break 
-        if summ in l:
-            if summ == l[0]:
-                if length < len(l):
-                    length = len(l)
-                    AmicableChain = l[:]
+        if number_was_used[newNumber]:
+            break
+        if newNumber in chain:
+            if newNumber == 1 or newNumber == chain[len(chain) - 1]:
+                break
+            start_index = chain.index(newNumber)
+            len_chain = len(chain) - start_index
+            chain_1 = chain[start_index:start_index + len_chain]
+            if length < len_chain:
+                length = len_chain
+                AmicableChain = chain_1[:]
+                min_a = min(AmicableChain)
+            elif length == len_chain:
+                if min(chain_1) < min_a:
+                    AmicableChain = chain_1[:]
+                    min_a = min(chain_1)
             break
         else:
-            l.append(summ)
+            chain.append(newNumber)
+    for j in chain:
+        number_was_used[j] = True
 
 
 stop_time = datetime.datetime.now()
 print(stop_time - start_time)
-print(length)
+print(min_a, length)
 print(AmicableChain)
 
