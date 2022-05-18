@@ -91,14 +91,14 @@ def SolveSudoku(sudoku : list):
     RemoveWrongPossibleValues(sudoku_t)
     RemoveWrongPossibleValues(sudoku3by3)
     while DoWeNeedToContinue(sudoku):
-        bNeedToContinueBuySingleValue = True
-        while bNeedToContinueBuySingleValue:
-            bNeedToContinueBuySingleValue = MakeStepBySingleValue(sudoku)
-            if bNeedToContinueBuySingleValue:
+        bNeedToContinueBySingleValue = True
+        while bNeedToContinueBySingleValue:
+            bNeedToContinueBySingleValue = MakeStepBySingleValue(sudoku)
+            if bNeedToContinueBySingleValue:
                 b1 = RemoveWrongPossibleValues(sudoku)
                 b2 = RemoveWrongPossibleValues(sudoku_t)
                 b3 = RemoveWrongPossibleValues(sudoku3by3)
-                bNeedToContinueBuySingleValue = b1 or b2 or b3
+                bNeedToContinueBySingleValue = b1 or b2 or b3
 
         if MakeStepBySinglePotentioalValue(sudoku):
             RemoveWrongPossibleValues(sudoku_t)
@@ -113,45 +113,115 @@ def SolveSudoku(sudoku : list):
             RemoveWrongPossibleValues(sudoku_t)
 
         if RemovePossibleValuesBySegment(sudoku, sudoku3by3, False):
-            bNeedToContinueBuySingleValue = True
-            while bNeedToContinueBuySingleValue:
-                bNeedToContinueBuySingleValue = MakeStepBySingleValue(sudoku)
-                if bNeedToContinueBuySingleValue:
+            bNeedToContinueBySingleValue = True
+            while bNeedToContinueBySingleValue:
+                bNeedToContinueBySingleValue = MakeStepBySingleValue(sudoku)
+                if bNeedToContinueBySingleValue:
                     b1 = RemoveWrongPossibleValues(sudoku)
                     b2 = RemoveWrongPossibleValues(sudoku_t)
                     b3 = RemoveWrongPossibleValues(sudoku3by3)
-                    bNeedToContinueBuySingleValue = b1 or b2 or b3
+                    bNeedToContinueBySingleValue = b1 or b2 or b3
 
 
         if RemovePossibleValuesBySegment(sudoku_t, sudoku3by3, True):
-            bNeedToContinueBuySingleValue = True
-            while bNeedToContinueBuySingleValue:
-                bNeedToContinueBuySingleValue = MakeStepBySingleValue(sudoku)
-                if bNeedToContinueBuySingleValue:
+            bNeedToContinueBySingleValue = True
+            while bNeedToContinueBySingleValue:
+                bNeedToContinueBySingleValue = MakeStepBySingleValue(sudoku)
+                if bNeedToContinueBySingleValue:
                     b1 = RemoveWrongPossibleValues(sudoku)
                     b2 = RemoveWrongPossibleValues(sudoku_t)
                     b3 = RemoveWrongPossibleValues(sudoku3by3)
-                    bNeedToContinueBuySingleValue = b1 or b2 or b3
+                    bNeedToContinueBySingleValue = b1 or b2 or b3
         
         if RemovePossibleValuesBySegmentByException(sudoku, sudoku3by3, False):
-            bNeedToContinueBuySingleValue = True
-            while bNeedToContinueBuySingleValue:
-                bNeedToContinueBuySingleValue = MakeStepBySingleValue(sudoku)
-                if bNeedToContinueBuySingleValue:
+            bNeedToContinueBySingleValue = True
+            while bNeedToContinueBySingleValue:
+                bNeedToContinueBySingleValue = MakeStepBySingleValue(sudoku)
+                if bNeedToContinueBySingleValue:
                     b1 = RemoveWrongPossibleValues(sudoku)
                     b2 = RemoveWrongPossibleValues(sudoku_t)
                     b3 = RemoveWrongPossibleValues(sudoku3by3)
-                    bNeedToContinueBuySingleValue = b1 or b2 or b3
+                    bNeedToContinueBySingleValue = b1 or b2 or b3
 
         if RemovePossibleValuesBySegmentByException(sudoku_t, sudoku3by3, True):
-            bNeedToContinueBuySingleValue = True
-            while bNeedToContinueBuySingleValue:
-                bNeedToContinueBuySingleValue = MakeStepBySingleValue(sudoku)
-                if bNeedToContinueBuySingleValue:
+            bNeedToContinueBySingleValue = True
+            while bNeedToContinueBySingleValue:
+                bNeedToContinueBySingleValue = MakeStepBySingleValue(sudoku)
+                if bNeedToContinueBySingleValue:
                     b1 = RemoveWrongPossibleValues(sudoku)
                     b2 = RemoveWrongPossibleValues(sudoku_t)
                     b3 = RemoveWrongPossibleValues(sudoku3by3)
-                    bNeedToContinueBuySingleValue = b1 or b2 or b3
+                    bNeedToContinueBySingleValue = b1 or b2 or b3
+        
+        if RemovePossibleValuesByNakedPairs(sudoku):
+            bNeedToContinueBySingleValue = True
+            while bNeedToContinueBySingleValue:
+                bNeedToContinueBySingleValue = MakeStepBySingleValue(sudoku)
+                if bNeedToContinueBySingleValue:
+                    b1 = RemoveWrongPossibleValues(sudoku)
+                    b2 = RemoveWrongPossibleValues(sudoku_t)
+                    b3 = RemoveWrongPossibleValues(sudoku3by3)
+                    bNeedToContinueBySingleValue = b1 or b2 or b3
+
+        if RemovePossibleValuesByNakedPairs(sudoku_t):
+            bNeedToContinueBySingleValue = True
+            while bNeedToContinueBySingleValue:
+                bNeedToContinueBySingleValue = MakeStepBySingleValue(sudoku)
+                if bNeedToContinueBySingleValue:
+                    b1 = RemoveWrongPossibleValues(sudoku)
+                    b2 = RemoveWrongPossibleValues(sudoku_t)
+                    b3 = RemoveWrongPossibleValues(sudoku3by3)
+                    bNeedToContinueBySingleValue = b1 or b2 or b3
+
+        if RemovePossibleValuesByNakedPairs(sudoku3by3):
+            bNeedToContinueBySingleValue = True
+            while bNeedToContinueBySingleValue:
+                bNeedToContinueBySingleValue = MakeStepBySingleValue(sudoku)
+                if bNeedToContinueBySingleValue:
+                    b1 = RemoveWrongPossibleValues(sudoku)
+                    b2 = RemoveWrongPossibleValues(sudoku_t)
+                    b3 = RemoveWrongPossibleValues(sudoku3by3)
+                    bNeedToContinueBySingleValue = b1 or b2 or b3
+
+        if RemovePossibleValuesByHiddenPairs(sudoku):
+            bNeedToContinueBySingleValue = True
+            while bNeedToContinueBySingleValue:
+                bNeedToContinueBySingleValue = MakeStepBySingleValue(sudoku)
+                if bNeedToContinueBySingleValue:
+                    b1 = RemoveWrongPossibleValues(sudoku)
+                    b2 = RemoveWrongPossibleValues(sudoku_t)
+                    b3 = RemoveWrongPossibleValues(sudoku3by3)
+                    bNeedToContinueBySingleValue = b1 or b2 or b3
+
+        if RemovePossibleValuesByHiddenPairs(sudoku_t):
+            bNeedToContinueBySingleValue = True
+            while bNeedToContinueBySingleValue:
+                bNeedToContinueBySingleValue = MakeStepBySingleValue(sudoku)
+                if bNeedToContinueBySingleValue:
+                    b1 = RemoveWrongPossibleValues(sudoku)
+                    b2 = RemoveWrongPossibleValues(sudoku_t)
+                    b3 = RemoveWrongPossibleValues(sudoku3by3)
+                    bNeedToContinueBySingleValue = b1 or b2 or b3
+
+        if RemovePossibleValuesByHiddenPairs(sudoku3by3):
+            bNeedToContinueBySingleValue = True
+            while bNeedToContinueBySingleValue:
+                bNeedToContinueBySingleValue = MakeStepBySingleValue(sudoku)
+                if bNeedToContinueBySingleValue:
+                    b1 = RemoveWrongPossibleValues(sudoku)
+                    b2 = RemoveWrongPossibleValues(sudoku_t)
+                    b3 = RemoveWrongPossibleValues(sudoku3by3)
+                    bNeedToContinueBySingleValue = b1 or b2 or b3
+
+        if RemovePossibleValuesByX_Wing(sudoku, sudoku_t):
+            bNeedToContinueBySingleValue = True
+            while bNeedToContinueBySingleValue:
+                bNeedToContinueBySingleValue = MakeStepBySingleValue(sudoku)
+                if bNeedToContinueBySingleValue:
+                    b1 = RemoveWrongPossibleValues(sudoku)
+                    b2 = RemoveWrongPossibleValues(sudoku_t)
+                    b3 = RemoveWrongPossibleValues(sudoku3by3)
+                    bNeedToContinueBySingleValue = b1 or b2 or b3
 
     if CheckSudoku(sudoku) and CheckSudoku(sudoku_t) and CheckSudoku(sudoku3by3):
         digit = 100 * sudoku[0][0].Value + 10 * sudoku[0][1].Value + sudoku[0][2].Value
@@ -303,6 +373,118 @@ def MakeStepBySinglePotentioalValue(sudoku : list) -> bool:
                 bResult = True
             index_list.clear()
     return bResult
+
+def RemovePossibleValuesByNakedPairs(sudoku : list) -> bool:
+    bResult = False
+    # if we have the same 2 values ONLY in PossibleValues for line - remove those digins from other PossibleValues
+    for line in sudoku:
+        for i in range(9):
+            if len(line[i].PossibleValues) == 2:
+                d1 = line[i].PossibleValues[0]
+                d2 = line[i].PossibleValues[1]
+                for j in range(i + 1, 9):
+                    if len(line[j].PossibleValues) == 2 and (d1 in line[j].PossibleValues) and (d2 in line[j].PossibleValues):
+                        for k in range(9):
+                            if k == i or k == j: continue
+                            if d1 in line[k].PossibleValues:
+                                line[k].PossibleValues.remove(d1)
+                                bResult = True
+                            if d2 in line[k].PossibleValues:
+                                line[k].PossibleValues.remove(d2)
+                                bResult = True
+    return bResult
+
+def RemovePossibleValuesByHiddenPairs(sudoku : list) -> bool:
+    bResult = False
+    # if we have the same 2 values in PossibleValues for line - remove all other digint from those two PossibleValues and those two digits from other PossibleValues
+    count_list = list()
+    pairs_list = list()
+    for i in range(10):
+        index_list = list()
+        count_list.append(index_list)
+    for line in sudoku:
+        for index_list in count_list:
+            index_list.clear()
+        pairs_list.clear()
+        for i in range(1, 10):
+            for j in range(9):
+                if i in line[j].PossibleValues:
+                    count_list[i].append(j)
+        for i in range(1, 10):
+            if len(count_list[i]) == 2:
+                pairs_list.append(i)
+        if len(pairs_list) == 2:
+            i1 = pairs_list[0]
+            i2 = pairs_list[1]
+            if (count_list[i1][0] == count_list[i2][0]) and (count_list[i1][1] == count_list[i2][1]):
+                for j in range(9):
+                    if (len(line[j].PossibleValues) > 2) and (i1 in line[j].PossibleValues) and (i2 in line[j].PossibleValues):
+                        line[j].PossibleValues.clear()
+                        line[j].PossibleValues.append(i1)
+                        line[j].PossibleValues.append(i2)
+                        bResult = True
+    return bResult
+
+def RemovePossibleValuesByX_Wing(sudoku : list, sudoku_t : list) -> bool:
+    bResult = False
+    # if we have the same 2 values in PossibleValues for line - remove all other digint from those two PossibleValues and those two digits from other PossibleValues
+    lines_list = list()
+    for i in range(10):
+        digit_list = list()
+        lines_list.append(digit_list)
+    for line in sudoku:
+        count_list = list()
+        for i in range(10):
+            index_list = list()
+            count_list.append(index_list)
+        for i in range(1, 10):
+            for j in range(9):
+                if i in line[j].PossibleValues:
+                    count_list[i].append(j)
+        for i in range(1, 10):
+            if len(count_list[i]) == 2:
+                lines_list[i].append(count_list[i])
+            else:
+                lines_list[i].append(list())
+    digit = 0
+    line_num1 = 0
+    line_num2 = 0
+    for i in range(1, 10):
+        list_for_digit = lines_list[i]
+        for j in range(9):
+            list1 = list_for_digit[j]
+            if len(list1) == 2:
+                index1 = list1[0]
+                index2 = list1[1]
+                for k in range(j + 1, 9):
+                    list2 = list_for_digit[k]
+                    if len(list2) == 2:
+                        if list2[0] == index1 and list2[1] == index2:
+                            digit = i
+                            line_num1 = j
+                            line_num2 = k
+
+                            column1 = sudoku_t[index1]
+                            column2 = sudoku_t[index2]
+                            for m in range(9):
+                                if m == line_num1 or m == line_num2:
+                                    continue
+                                pt = column1[m]
+                                if digit in pt.PossibleValues:
+                                    pt.PossibleValues.remove(digit)
+                                    bResult = True
+                                pt = column2[m]
+                                if digit in pt.PossibleValues:
+                                    pt.PossibleValues.remove(digit)
+                                    bResult = True
+                    if bResult:
+                        break
+            if bResult:
+                break
+        if bResult:
+            break
+    return bResult
+
 
 start_time = datetime.datetime.now()
 nums = list()
