@@ -333,4 +333,3 @@ for line in lines:
 stop_time = datetime.datetime.now()
 print(stop_time - start_time)
 print(count, summ)
-
