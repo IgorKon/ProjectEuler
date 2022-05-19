@@ -485,7 +485,6 @@ def RemovePossibleValuesByX_Wing(sudoku : list, sudoku_t : list) -> bool:
             break
     return bResult
 
-
 start_time = datetime.datetime.now()
 nums = list()
 f = open('num96.txt') 
