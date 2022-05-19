@@ -374,6 +374,7 @@ def MakeStepBySinglePotentioalValue(sudoku : list) -> bool:
             index_list.clear()
     return bResult
 
+<<<<<<< HEAD
 def RemovePossibleValuesByNakedPairs(sudoku : list) -> bool:
     bResult = False
     # if we have the same 2 values ONLY in PossibleValues for line - remove those digins from other PossibleValues
@@ -486,6 +487,8 @@ def RemovePossibleValuesByX_Wing(sudoku : list, sudoku_t : list) -> bool:
     return bResult
 
 
+=======
+>>>>>>> 2d117958da9845339697ac054b6889a4174f9a84
 start_time = datetime.datetime.now()
 nums = list()
 f = open('num96.txt') 
