@@ -223,6 +223,16 @@ def SolveSudoku(sudoku : list):
                     b3 = RemoveWrongPossibleValues(sudoku3by3)
                     bNeedToContinueBySingleValue = b1 or b2 or b3
 
+        if RemovePossibleValuesByX_Wing(sudoku_t, sudoku):
+            bNeedToContinueBySingleValue = True
+            while bNeedToContinueBySingleValue:
+                bNeedToContinueBySingleValue = MakeStepBySingleValue(sudoku)
+                if bNeedToContinueBySingleValue:
+                    b1 = RemoveWrongPossibleValues(sudoku)
+                    b2 = RemoveWrongPossibleValues(sudoku_t)
+                    b3 = RemoveWrongPossibleValues(sudoku3by3)
+                    bNeedToContinueBySingleValue = b1 or b2 or b3
+
     if CheckSudoku(sudoku) and CheckSudoku(sudoku_t) and CheckSudoku(sudoku3by3):
         digit = 100 * sudoku[0][0].Value + 10 * sudoku[0][1].Value + sudoku[0][2].Value
     else:
